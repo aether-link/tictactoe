@@ -1,4 +1,6 @@
 # Marking the board
+from userInput import Player
+
 def mark(h,c):
     if(h | c):
         if(h):
@@ -31,7 +33,6 @@ if __name__ == '__main__':
         7: False,
         8: False,
         9: False,
-
     }
     computer = {
         1: False,
@@ -46,3 +47,5 @@ if __name__ == '__main__':
 
     }
     display(human, computer)
+    p1 = Player(human,computer)
+    p1.get_user_input()
