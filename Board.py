@@ -11,19 +11,24 @@ class Board:
           for index in row:
               index = " "
 
-    def update(self, userInput, player):
-        self.board[userInput] = "x"
+    def update(self, row,column, player):
+        self.board[row-1][column-1] = player
 
     def get_data(self):
-        return dict(self.board)
+        return self.board
 
-    def checkPosition(self, userInput):
+    def checkPosition(self, row, column):
         if self.board[userInput] in ["X", "O"]:
             raise newError("Position taken")
     def display(self):
         for row in self.board:
-            print(row)
+            column = iter(row)
+            print(next(column), "|", next(column), "|", next(column))
             
-board = Board()
-board.set_empty()
-board.display()
+if __name__ == "__main__":
+    board = Board()
+    board.set_empty()
+    board.display()
+    print()
+    board.update(1,1, "x")
+    board.display()

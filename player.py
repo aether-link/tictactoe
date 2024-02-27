@@ -1,28 +1,22 @@
-from Board import Board
 from error import newError
 
-class Player(Board):
-    def __init__(self, board_data):
-        self.board_data=board_data
+class Player():
+    def __init__(self):
         self.player='x'
         
     def get_user_input(self, board):
-        userInput = input("Enter your move:")
+        row = input("Enter row: ")
+        column = input("Enter column: ")
         try:
-            userInput = int(userInput)
-            if userInput < 1 or userInput > 9:
-                raise newError("Value out of range")
-            board.checkPosition(userInput)
-
-            return userInput
-
-        except ValueError:
-            print("Invalid input")
-            self.get_user_input(board)
-
+            row = int(row)
+            column = int(column)
+            if row not in range(1, 4) or column not in range(1, 4):
+                raise newError("Invalid input")
+            if board[row-1][column-1] in ["X", "O"]:
+                raise newError("Position taken")
+            return row, column
+        except (TypeError, ValueError) as e:
+            raise newError("Invalid input") from e
         except newError as e:
             print(e)
-            self.get_user_input(board)
-              
-    
-
+            return self.get_user_input(board)
