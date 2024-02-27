@@ -3,9 +3,8 @@ from player import Player
 from Board import Board
 
 class Game(Board):
-    def __init__(self, computer):
+    def __init__(self):
         super().__init__()
-        self.computer = computer
         self.player = Player(super())
 
 
