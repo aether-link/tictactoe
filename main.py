@@ -1,24 +1,18 @@
 # Marking the board
 from player import Player
+from Board import Board
 
-class Game:
+class Game(Board):
     def __init__(self, computer):
-        
+        self.board = Board()
         self.computer = computer
-        self.player = Player(computer)
-        self.human= self.player.get_positions()
+        self.data = self.board.get_data()
+        self.player = Player(self.data)
 
     def get_user_input(self):
-        self.player.get_user_input()
-
-    def mark(self,h,c):
-        if(h | c):
-            if(h):
-                print(' O ', end='')
-            else:
-                print(' X ', end='')
-        else:
-            print('   ', end='')
+        new_data =self.player.get_user_input(self.board)
+        self.board.update(new_data, 'x')
+        self.data = self.board.get_data()
 
     # Printing the board
     def display(self):
@@ -26,7 +20,10 @@ class Game:
         for j in range(0, 3):
             for i in range(0, 3):
                 print('|', end='')
-                self.mark(self.human[p], self.computer[p])
+                if(self.data[p]!=" "):
+                    print(f' {self.data[p]} ', end='')
+                else:
+                    print("   ", end='')
                 p+=1
             print('|')
 
@@ -45,7 +42,8 @@ if __name__ == '__main__':
         8: False,
         9: False,
         }
-    game =Game( computer)
+    game = Game(computer)
     game.display()
     game.get_user_input()
     game.display()
+    #end
