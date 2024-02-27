@@ -3,9 +3,8 @@ from player import Player
 from Board import Board
 
 class Game(Board):
-    def __init__(self, computer):
+    def __init__(self):
         self.board = Board()
-        self.computer = computer
         self.data = self.board.get_data()
         self.player = Player(self.data)
 
@@ -31,18 +30,8 @@ class Game(Board):
 if __name__ == '__main__':
     # Dictionary to store the board records
     
-    computer={
-        1: False,
-        2: True,
-        3: False,
-        4: False,
-        5: False,
-        6: False,
-        7: False,
-        8: False,
-        9: False,
-        }
-    game = Game(computer)
+    
+    game = Game()
     game.display()
     game.get_user_input()
     game.display()
