@@ -12,11 +12,10 @@ class Player(Board):
             userInput = int(userInput)
             if userInput < 1 or userInput > 9:
                 raise newError("Value out of range")
-            else:
-                board.checkPosition(userInput)
-                
-                return userInput
-                
+            board.checkPosition(userInput)
+
+            return userInput
+
         except ValueError:
             print("Invalid input")
             self.get_user_input(board)
