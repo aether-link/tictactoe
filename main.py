@@ -5,26 +5,16 @@ from Board import Board
 class Game(Board):
     def __init__(self):
         super().__init__()
-        self.player = Player(super())
+        self.player = Player()
 
 
     def get_user_input(self):
-        new_data =self.player.get_user_input(super())
-        super().update(new_data, 'x')
+        row, column = self.player.get_user_input(board=super().get_data())
+        super().update(row, column, self.player.player)
 
     # Printing the board
     def display(self):
-        data = super().get_data()
-        p=1
-        for _ in range(3):
-            for _ in range(3):
-                print('|', end='')
-                if(data[p]!=" "):
-                    print(f' {data[p]} ', end='')
-                else:
-                    print("   ", end='')
-                p+=1
-            print('|')
+        super().display()
 
 
 if __name__ == '__main__':
