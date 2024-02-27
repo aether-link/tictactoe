@@ -8,6 +8,7 @@ class Game(Board):
         self.computer = computer
         self.player = Player(super())
 
+
     def get_user_input(self):
         new_data =self.player.get_user_input(super())
         super().update(new_data, 'x')
@@ -30,18 +31,8 @@ class Game(Board):
 if __name__ == '__main__':
     # Dictionary to store the board records
     
-    computer={
-        1: False,
-        2: True,
-        3: False,
-        4: False,
-        5: False,
-        6: False,
-        7: False,
-        8: False,
-        9: False,
-        }
-    game = Game(computer)
+    
+    game = Game()
     game.display()
     game.get_user_input()
     game.display()
