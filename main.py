@@ -26,7 +26,7 @@ class Game(Board):
         else:
             print("Position Occupied!")
             self.get_user_input()
-
+            
     # Printing the board
     def display(self):
         super().display()
