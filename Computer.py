@@ -1,16 +1,7 @@
 from Board import Board
 import random
 
-winning_conditions = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-    [1, 4, 7],
-    [2, 5, 8],
-    [3, 6, 9],
-    [1, 5, 9],
-    [3, 5, 7],
-]
+
 
 
 class Computer:
@@ -41,10 +32,7 @@ class Computer:
         print(user_moves)
 
 
-board = Board()
-for i in range(10):
-    board.board[i] = "X" if random.choice((0, 1)) == 1 else "O"
-    
+
 if __name__ == "__main__":
     computer = Computer()
     computer.calculate(board=board)

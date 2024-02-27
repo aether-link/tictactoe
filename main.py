@@ -2,6 +2,17 @@
 from player import Player
 from Board import Board
 
+winning_conditions = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9],
+    [1, 5, 9],
+    [3, 5, 7],
+]
+
 class Game(Board):
     def __init__(self):
         super().__init__()
@@ -16,6 +27,8 @@ class Game(Board):
     def display(self):
         super().display()
 
+    def check_winner(self):
+        pass
 
 if __name__ == '__main__':
     # Dictionary to store the board records
