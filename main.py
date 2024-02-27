@@ -3,14 +3,14 @@ from player import Player
 from Board import Board
 
 winning_conditions = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-    [1, 4, 7],
-    [2, 5, 8],
-    [3, 6, 9],
-    [1, 5, 9],
-    [3, 5, 7],
+    [(0, 0), (0, 1), (0, 2)],  # row 1
+    [(1, 0), (1, 1), (1, 2)],  # row 2
+    [(2, 0), (2, 1), (2, 2)],  # row 3
+    [(0, 0), (1, 0), (2, 0)],  # column 1
+    [(0, 1), (1, 1), (2, 1)],  # column 2
+    [(0, 2), (1, 2), (2, 2)],  # column 3
+    [(0, 0), (1, 1), (2, 2)],  # diagonal 1
+    [(0, 2), (1, 1), (2, 0)],  # diagonal 2
 ]
 
 class Game(Board):
@@ -26,16 +26,18 @@ class Game(Board):
     # Printing the board
     def display(self):
         super().display()
+        
+    def reset(self):
+        super().set_empty()
+        
 
     def check_winner(self):
         pass
 
 if __name__ == '__main__':
-    # Dictionary to store the board records
-    
-    
     game = Game()
-    game.display()
-    game.get_user_input()
-    game.display()
-    #end
+    
+    GameOver = False
+    while(not GameOver):
+        game.reset()
+        
