@@ -1,51 +1,38 @@
 # Marking the board
-from userInput import Player
+from player import Player
+from Board import Board
 
-def mark(h,c):
-    if(h | c):
-        if(h):
-            print(' O ', end='')
-        else:
-            print(' X ', end='')
-    else:
-        print('   ', end='')
+class Game(Board):
+    def __init__(self):
+        self.board = Board()
+        self.data = self.board.get_data()
+        self.player = Player(self.data)
 
-# Printing the board
-def display(human, computer):
-    p=1
-    for j in range(0, 3):
-        for i in range(0, 3):
-            print('|', end='')
-            mark(human[p], computer[p])
-            p+=1
-        print('|')
+    def get_user_input(self):
+        new_data =self.player.get_user_input(self.board)
+        self.board.update(new_data, 'x')
+        self.data = self.board.get_data()
+
+    # Printing the board
+    def display(self):
+        p=1
+        for j in range(0, 3):
+            for i in range(0, 3):
+                print('|', end='')
+                if(self.data[p]!=" "):
+                    print(f' {self.data[p]} ', end='')
+                else:
+                    print("   ", end='')
+                p+=1
+            print('|')
 
 
 if __name__ == '__main__':
     # Dictionary to store the board records
-    human = {
-        1: True,
-        2: False,
-        3: False,
-        4: False,
-        5: False,
-        6: False,
-        7: False,
-        8: False,
-        9: False,
-    }
-    computer = {
-        1: False,
-        2: False,
-        3: True,
-        4: False,
-        5: False,
-        6: False,
-        7: False,
-        8: False,
-        9: False,
-
-    }
-    display(human, computer)
-    p1 = Player(human,computer)
-    p1.get_user_input()
+    
+    
+    game = Game()
+    game.display()
+    game.get_user_input()
+    game.display()
+    #end
