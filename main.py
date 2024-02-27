@@ -5,22 +5,21 @@ from Board import Board
 class Game(Board):
     def __init__(self):
         self.board = Board()
-        self.data = self.board.get_data()
-        self.player = Player(self.data)
+        self.player = Player(self.board.get_data())
 
     def get_user_input(self):
         new_data =self.player.get_user_input(self.board)
         self.board.update(new_data, 'x')
-        self.data = self.board.get_data()
 
     # Printing the board
     def display(self):
+        data = self.board.get_data()
         p=1
         for j in range(0, 3):
             for i in range(0, 3):
                 print('|', end='')
-                if(self.data[p]!=" "):
-                    print(f' {self.data[p]} ', end='')
+                if(data[p]!=" "):
+                    print(f' {data[p]} ', end='')
                 else:
                     print("   ", end='')
                 p+=1
