@@ -1,7 +1,7 @@
 from error import newError
 class Board:
     def __init__(self):
-        self.board = dict()
+        self.board = {}
         self.set_empty()
         
     def set_empty(self):
@@ -24,6 +24,6 @@ class Board:
         return dict(self.board)
     
     def checkPosition(self, userInput):
-        if self.board[userInput]=='X' or self.board[userInput]=='O':
+        if self.board[userInput] in ['X', 'O']:
             raise newError("Position taken")
     

@@ -4,24 +4,23 @@ from Board import Board
 
 class Game(Board):
     def __init__(self, computer):
-        self.board = Board()
+        super().__init__()
         self.computer = computer
-        self.data = self.board.get_data()
-        self.player = Player(self.data)
+        self.player = Player(super())
 
     def get_user_input(self):
-        new_data =self.player.get_user_input(self.board)
-        self.board.update(new_data, 'x')
-        self.data = self.board.get_data()
+        new_data =self.player.get_user_input(super())
+        super().update(new_data, 'x')
 
     # Printing the board
     def display(self):
+        data = super().get_data()
         p=1
-        for j in range(0, 3):
-            for i in range(0, 3):
+        for _ in range(3):
+            for _ in range(3):
                 print('|', end='')
-                if(self.data[p]!=" "):
-                    print(f' {self.data[p]} ', end='')
+                if(data[p]!=" "):
+                    print(f' {data[p]} ', end='')
                 else:
                     print("   ", end='')
                 p+=1
