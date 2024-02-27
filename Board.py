@@ -13,13 +13,13 @@ class Board:
 
     def update(self, row, column, player):
         self.board[row - 1][column - 1] = player
+        self.display()
 
     def get_data(self):
         return self.board
 
-    def checkPosition(self, row, column):
-        if self.board[row][column] in ["X", "O"]:
-            raise newError("Position taken")
+    def checkPosition(self, row, column, player="X", computer="O"):
+        return self.board[row-1][column-1] not in [player, computer]
 
     def display(self):
         for row in self.board:
@@ -32,5 +32,6 @@ if __name__ == "__main__":
     board.set_empty()
     board.display()
     print()
-    board.update(1, 1, "x")
+    board.update(1, 1, "X")
     board.display()
+    print(board.checkPosition(1,1))

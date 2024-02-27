@@ -13,31 +13,38 @@ winning_conditions = [
     [(0, 2), (1, 1), (2, 0)],  # diagonal 2
 ]
 
+
 class Game(Board):
     def __init__(self):
         super().__init__()
         self.player = Player()
 
-
     def get_user_input(self):
         row, column = self.player.get_user_input(board=super().get_data())
-        super().update(row, column, self.player.player)
+        if super().checkPosition(row,column):
+            super().update(row, column, self.player.player)
+        else:
+            print("Position Occupied!")
+            self.get_user_input()
 
     # Printing the board
     def display(self):
         super().display()
-        
+
     def reset(self):
         super().set_empty()
-        
 
     def check_winner(self):
         pass
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     game = Game()
-    
-    GameOver = False
-    while(not GameOver):
-        game.reset()
-        
+    game.display()
+    game.get_user_input()
+    game.get_user_input()
+    game.get_user_input()
+    game.get_user_input()
+    print("Game Over")
+    game.reset()
+    game.display()
