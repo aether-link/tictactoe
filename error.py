@@ -1,2 +1,0 @@
-class newError(Exception):
-    pass
