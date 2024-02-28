@@ -6,13 +6,13 @@ class Board:
         self.board = [[" " for _ in range(3)] for _ in range(3)]
         self.set_empty()
 
-    def set_empty(self):  # sourcery skip: use-itertools-product
+    def set_empty(self):
         for row in range(3):
             for column in range(3):
                 self.board[row][column] = " "
 
     def update(self, row, column, player):
-        self.board[row - 1][column - 1] = player
+        self.board[row][column] = player
         self.display()
 
     def get_data(self):
