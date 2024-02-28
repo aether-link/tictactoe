@@ -22,7 +22,6 @@ class Game(Board, Player, Computer):
         self.computer = computer
 
     def get_moves(self, symbol):
-        # sourcery skip: for-append-to-extend, inline-immediately-returned-variable, list-comprehension, use-itertools-product
         moves = []
         for row in range(3):
             for column in range(3):
@@ -68,16 +67,6 @@ class Game(Board, Player, Computer):
 
 
 if __name__ == "__main__":
-    # game = Game()
-    # game.display()
-    # game.get_user_input()
-    # game.get_user_input()
-    # game.get_user_input()
-    # game.get_user_input()
-    # print("Game Over")
-    # game.reset()
-    # game.display()
-
     game = Game()
     game.display()
     GameOver = False
