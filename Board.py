@@ -1,6 +1,3 @@
-from error import newError
-
-
 class Board:
     def __init__(self):
         self.board = [[" " for _ in range(3)] for _ in range(3)]
@@ -27,11 +24,3 @@ class Board:
             print("|", next(column), "|", next(column), "|", next(column), "|")
 
 
-if __name__ == "__main__":
-    board = Board()
-    board.set_empty()
-    board.display()
-    print()
-    board.update(1, 1, "X")
-    board.display()
-    print(board.checkPosition(1,1))

@@ -77,7 +77,7 @@ if __name__ == "__main__":
             print("Players Turn")
             row, column = game.get_player_input()
             game.update(row-1, column-1, player="X")
-            if game.check_winner():
+            if game.check_winner() or game.get_available_moves() == []:
                 break
             print("Computers' Turn")
             row, column = game.get_computer_input()

@@ -1,6 +1,3 @@
-from error import newError
-
-
 class Player:
     def __init__(self, player="X", computer="O"):
         self.player = player
@@ -11,6 +8,10 @@ class Player:
             row = input("Enter row: ")
             column = input("Enter column: ")
             if row.isdigit() & column.isdigit():
-                return int(row), int(column)
+                row, column = int(row), int(column)
+                if row<=3 and column<=3:
+                    return row, column
+                else:
+                    print("Value out of range, Try Again!")
             else:
                 print("Invalid Input, Try Again!")
