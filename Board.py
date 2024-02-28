@@ -12,7 +12,7 @@ class Board:
                 self.board[row][column] = " "
 
     def update(self, row, column, player):
-        self.board[row - 1][column - 1] = player
+        self.board[row][column] = player
         self.display()
 
     def get_data(self):
